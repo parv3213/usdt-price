@@ -35,7 +35,7 @@ jobs:
       - name: Send Email  
         run: node usdtTicket.js
         env:
-          user: ${{user}}
-          pass: ${{pass}}
-          to: ${{to}}
+          user: ${{secrets.user}}
+          pass: ${{secrets.pass}}
+          to: ${{secrets.to}}
           CI: true
