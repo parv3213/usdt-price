@@ -3,6 +3,8 @@ const https = require('https')
 const nodemailer = require('nodemailer')
 const smtpTransport = require('nodemailer-smtp-transport')
 
+const { HOST_STRING, PORT_NUMBER, FROM_USER, FROM_PASSWORD, TO_USER } = process.env
+
 function fetchP2PData(page = 1, fiat = 'INR', tradeType = 'SELL', asset = 'USDT') {
   return new Promise((resolve, reject) => {
     const baseObj = {
@@ -66,18 +68,18 @@ const avgPrice = async () => {
 const sendMail = async () => {
   const transporter = nodemailer.createTransport(
     smtpTransport({
-      service: 'gmail',
-      host: 'smtp.gmail.com',
+      host: HOST_STRING,
+      port: Number(PORT_NUMBER),
       auth: {
-        user: process.env.user,
-        pass: process.env.pass,
+        user: FROM_USER,
+        pass: FROM_PASSWORD,
       },
     }),
   )
 
   const mailOptions = {
-    from: process.env.user,
-    to: process.env.to,
+    from: FROM_USER,
+    to: TO_USER,
     subject: `USDC INR Price: ${(await avgPrice()).toFixed(2)}`,
   }
 
