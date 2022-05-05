@@ -5,7 +5,7 @@ name: Price Ticker
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 3 * * *"
+    - cron: '30 3 * * *'
 
 jobs:
   test:
@@ -20,7 +20,7 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-          path: "**/node_modules"
+          path: '**/node_modules'
           key: nodeModules-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install packages
@@ -28,10 +28,12 @@ jobs:
         env:
           CI: true
 
-      - name: Send Email  
+      - name: Send Email
         run: node usdtTicket.js
         env:
-          user: ${{secrets.user}}
-          pass: ${{secrets.pass}}
-          to: ${{secrets.to}}
+          HOST_STRING: ${{secrets.HOST_STRING}}
+          PORT_NUMBER: ${{secrets.PORT_NUMBER}}
+          FROM_USER: ${{secrets.FROM_USER}}
+          FROM_PASSWORD: ${{secrets.FROM_PASSWORD}}
+          TO_USER: ${{secrets.TO_USER}}
           CI: true
