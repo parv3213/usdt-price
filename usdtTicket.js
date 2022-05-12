@@ -91,9 +91,4 @@ const sendMail = async () => {
   }
 }
 
-// sendMail()
-
-const temp = async () => {
-  console.log(`USDC INR Price: ${(await avgPrice()).toFixed(2)}`)
-}
-temp()
+sendMail()
