@@ -15,6 +15,7 @@ function fetchP2PData(page = 1, fiat = 'INR', tradeType = 'SELL', asset = 'USDT'
       asset,
       tradeType,
       fiat,
+      transAmount: '50000',
     }
 
     const stringData = JSON.stringify(baseObj)
@@ -90,4 +91,9 @@ const sendMail = async () => {
   }
 }
 
-sendMail()
+// sendMail()
+
+const temp = async () => {
+  console.log(`USDC INR Price: ${(await avgPrice()).toFixed(2)}`)
+}
+temp()
