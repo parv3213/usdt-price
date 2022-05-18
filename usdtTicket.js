@@ -91,4 +91,4 @@ const sendMail = async () => {
   }
 }
 
-sendMail()
+module.exports = avgPrice
