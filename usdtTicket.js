@@ -63,7 +63,7 @@ const avgPrice = async () => {
 
   const sum = priceArray.reduce((a, b) => a + b, 0)
   const avg = sum / priceArray.length || 0
-  return avg
+  return avg.toFixed(2)
 }
 
 const sendMail = async () => {
@@ -81,7 +81,7 @@ const sendMail = async () => {
   const mailOptions = {
     from: FROM_USER,
     to: TO_USER,
-    subject: `USDC INR Price: ${(await avgPrice()).toFixed(2)}`,
+    subject: `USDC INR Price: ${await avgPrice()}`,
   }
 
   try {
