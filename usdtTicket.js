@@ -91,4 +91,4 @@ const sendMail = async () => {
   }
 }
 
-module.exports = avgPrice
+module.exports = { avgPrice, sendMail }

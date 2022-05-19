@@ -1,5 +1,5 @@
 const express = require('express')
-const avgPrice = require('./usdtTicket')
+const avgPrice = require('./usdtTicket').avgPrice
 const bodyParser = require('body-parser')
 let cors = require('cors')
 
